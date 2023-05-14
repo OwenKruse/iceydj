@@ -49,7 +49,7 @@ export default function Home() {
                     objectFit: 'cover',
                 }
             } id="myVideo">
-                <source src="/videos/DJ_Set_2_MAYBE.mov" type="video/mp4" />
+                <source src="/Snapinsta.app_video_346088196_496837095891982_9199245343912388216_n(1).mp4" type="video/mp4" />
             </video>
             <div className={styles.overlay}>
                 <Container maxWidth="lg">
