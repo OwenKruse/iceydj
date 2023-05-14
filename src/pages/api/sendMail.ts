@@ -25,7 +25,9 @@ export default async function handler(req, res) {
             to: to,
             subject: 'Confirm booking for: ' + dateString,
             text: 'This email is an automated confirmation of your booking for ' + dateString +
-                '. Please wait for out team to reach out to you to confirm the booking, verify details, and discuss payment.'
+                '. Please wait for out team to reach out to you to confirm the booking, verify details, and discuss payment.' +
+                'If you have any questions, please contact us at booking@iceydj.com.' + '\n\n' +
+                to
         };
 
         try {
