@@ -7,10 +7,12 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/material/styles';
+import { useRouter } from 'next/router'
 
 
 
 export default function ButtonAppBar() {
+    const router = useRouter()
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="absolute" sx={
@@ -23,10 +25,17 @@ export default function ButtonAppBar() {
                 }
             }>
                 <Toolbar>
-                    <Typography variant="h5" component="div" sx={{
+                    <Typography
+                        onClick={
+                            () => {
+                                router.push('/')
+                            }
+                        }
+                        variant="h5" component="div" sx={{
                         flexGrow: 1,
                         color: 'white',
                         fontWeight: 'bold',
+                        cursor: 'pointer',
 
                     }}>
                         ICEY MUSIC

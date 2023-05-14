@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 
 
     if (req.method === 'POST') {
-        const { mail, dateString } = req.body;
+        let { to, dateString } = req.body;
 
         const transporter = nodemailer.createTransport({
             host: "mail.privateemail.com",
@@ -18,9 +18,11 @@ export default async function handler(req, res) {
                 pass: '4Frozen9%'
             }
         });
+        // Remove the part after the comma in dateString
+        dateString = dateString.split(',')[0];
         const mailOptions = {
-            from: 'booking@iceydj.com',
-            to: mail,
+            from: 'noreply@iceydj.com',
+            to: to,
             subject: 'Confirm booking for: ' + dateString,
             text: 'This email is an automated confirmation of your booking for ' + dateString +
                 '. Please wait for out team to reach out to you to confirm the booking, verify details, and discuss payment.'

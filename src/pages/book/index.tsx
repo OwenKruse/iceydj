@@ -60,7 +60,7 @@ export default function Book() {
 
 
     const sendMail = async (to: string) => {
-
+        console.log(email)
         // Convert date to string
         let dateString = moment(date).format('MMMM Do YYYY, h:mm:ss a')
         const res = await fetch('/api/sendMail', {
@@ -77,8 +77,8 @@ export default function Book() {
     const handleClick = () => {
         // send an email.
         sendMail(email);
-        // Redirect to / confirmed
-        router.push('/confirmed');
+        sendMail('booking@iceydj.com')
+        router.push('/booked')
     }
 
     function shouldDisableTime(time: string | number | Date) {
@@ -104,21 +104,47 @@ export default function Book() {
             justifyContent: 'center',
             alignItems: 'center',
             flexDirection: 'column',
-        }}>
+
+
+            }}>
 
            <Grid item sx={
                 {
-                    backgroundColor: 'rgb(56,56,56)',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     flexDirection: 'column',
                     borderRadius: '10px',
                     padding: '10px',
-
+                    position: 'relative',
+                    zIndex: 1,
                 }
            }>
+               <div style={{
+                   /* Shadow */
+                   position: 'absolute',
+                   width: '100%',
+                   height: '100%',
+                   background: 'linear-gradient(90deg, #44BCFF -0.55%, #44B0FF 22.86%, #FF44EC 48.36%, #FF44EC 73.33%, #FF675E 99.34%)',
+                   filter: 'blur(35px)',
+                   zIndex: -1,
+
+
+               }}/>
+
+               <Grid sx={{
+                     display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        flexDirection: 'column',
+                        borderRadius: '10px',
+                        padding: '10px',
+                        position: 'relative',
+                        zIndex: 1,
+                           backgroundColor: 'rgb(56,56,56)',
+               }}>
                 <Grid item xs={6} sx={{
+
                 }
                 }>
                     <Typography variant="h2" sx={
@@ -262,23 +288,10 @@ export default function Book() {
                                     paddingTop: '1rem',
                                     
                                 }
-                            } xs={12}>
-                                <Typography variant="h6" sx={
-                                    {
-                                        color: 'white',
-                                        fontWeight: 'bold',
-                                        paddingRight: '.5rem',
-                                        paddingTop: '1rem',
-
-
-                                    }
-                                }>
-                                    Book for {moment(date).format('MMMM Do YYYY')} from 8pm to 2am
-
-                                </Typography>
+                            } xs={8}>
                                 <Button onClick={handleClick}
                                         color={'secondary'}
-
+                                        disabled={email === '' || name === ''}
                                         variant="contained" >Confirm</Button>
                             </Grid>
                         </Grid>}
@@ -286,8 +299,9 @@ export default function Book() {
 
                 </Grid>
 
-
+               </Grid>
               </Grid>
+
         </Grid>
         </>
     );
