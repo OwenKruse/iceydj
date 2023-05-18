@@ -270,7 +270,7 @@ export default function Book() {
                             </TextField>
                         </Grid>
 
-                        {date && <Grid sx={
+                       <Grid sx={
                             {
                                 display: 'flex',
                                 justifyContent: 'center',
@@ -290,11 +290,15 @@ export default function Book() {
                                 }
                             } xs={8}>
                                 <Button onClick={handleClick}
-                                        color={'secondary'}
+                                        color={'primary'}
+                                        sx={{
+                                            color: 'white',
+                                            fontWeight: 'bold',
+                                        }}
                                         disabled={email === '' || name === ''}
                                         variant="contained" >Confirm</Button>
                             </Grid>
-                        </Grid>}
+                        </Grid>
                     </LocalizationProvider>
 
                 </Grid>
